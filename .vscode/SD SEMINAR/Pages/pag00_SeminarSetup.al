@@ -11,7 +11,7 @@ page 50100 "CSD Seminar Setup"
     InsertAllowed = false;
     DeleteAllowed = false;
     UsageCategory = Administration;
-    
+
 
 
     layout
@@ -20,7 +20,7 @@ page 50100 "CSD Seminar Setup"
         {
             group(Numbering)
             {
-                field("Seminar Nos."; "Seminar Nos.")
+                field("Seminar Nos";"Seminar Nos")
                 {
 
                 }

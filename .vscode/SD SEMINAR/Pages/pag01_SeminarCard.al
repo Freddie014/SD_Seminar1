@@ -7,7 +7,7 @@ page 50101 "CSD Seminar Card"
 {
     PageType = Card;
     SourceTable = "CSD Seminar";
-    
+
     layout
     {
         area(Content)
@@ -109,7 +109,7 @@ page 50101 "CSD Seminar Card"
                 {
                     RunObject=page "CSD Seminar Comment Sheet";
 
-                    RunPageLink = "TableName"=const(Seminar),"No."=field(No.);
+                                  RunPageLink = "TableName"=const(Seminar),"No."=field(No.);
 
                     Image = Comment;
 

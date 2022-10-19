@@ -107,7 +107,7 @@ table 50101 "CSD Seminar"
 
     trigger OnInsert()
     begin
-        
+
     end;
 
     trigger OnModify()

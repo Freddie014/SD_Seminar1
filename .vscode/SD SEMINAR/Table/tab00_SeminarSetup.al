@@ -1,3 +1,6 @@
+/// <summary>
+/// Table CSD Seminar Setup (ID 50100).
+/// </summary>
 table 50100 "CSD Seminar Setup"
 
 //CSD1.00 - 2018-01-01- D.E.Veloper
@@ -13,6 +16,40 @@ table 50100 "CSD Seminar Setup"
         {
             Caption = 'Primary Key';
         }
+        field(11; "No."; Code[20])
+        {
+
+        }
+
+
+        field(12; "No. Series"; Code[20])
+        {
+
+        }
+
+        field(13; "Last Date Modified"; Date)
+        {
+
+        }
+
+        field(24; "Search Name"; Code[20])
+        {
+
+        }
+
+        field(25; "Name"; Code[20])
+        {
+
+        }
+
+        field(40; "Posted Seminar Reg. Nos"; Code[20])
+        {
+
+            Caption = 'Posted Seminar Reg. Nos';
+
+            TableRelation = "No. Series";
+        }
+
 
         field(20; "Seminar Nos"; Code[20])
         {
@@ -30,12 +67,20 @@ table 50100 "CSD Seminar Setup"
             TableRelation = "No. Series";
         }
 
-        field(40; "Posted Seminar Reg. Nos"; Code[20])
+        field(45; "Gen. Prod. Posting Group"; Code[20])
         {
 
-            Caption = 'Posted Seminar Reg. Nos';
+            Caption = 'Gen. Prod. Posting Group';
 
-            TableRelation = "No. Series";
+            //TableRelation = "No. Series";
+        }
+
+        field(55; "VAT. Prod. Posting Group"; Code[20])
+        {
+
+            Caption = 'VAT. Prod. Posting Group';
+
+            //TableRelation = "No. Series";
         }
 
     }
@@ -65,8 +110,8 @@ table 50100 "CSD Seminar Setup"
         if "No." = '' then begin
             SeminarSetup.get;
 
-            SeminarSetup.TestField("Seminar Nos.");
-            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            SeminarSetup.TestField("Seminar Nos");
+            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Nos", xRec."No. Series", 0D, "No.", "No. Series");
         end;
     end;
 
@@ -107,7 +152,7 @@ table 50100 "CSD Seminar Setup"
         if "No." <> xRec."No." then begin
             SeminarSetup.Get();
 
-            NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos.");
+            NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos");
 
             "No. Series" := '';
         end;
