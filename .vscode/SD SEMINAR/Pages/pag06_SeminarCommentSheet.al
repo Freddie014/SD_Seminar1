@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Comment Line (ID 50106).
+/// </summary>
 page 50106 "CSD Seminar Comment Line"
 
 {

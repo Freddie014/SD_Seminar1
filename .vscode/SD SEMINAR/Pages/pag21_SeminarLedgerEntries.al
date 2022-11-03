@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Ledger Entries (ID 50121).
+/// </summary>
 page 50121 "CSD Seminar Ledger Entries"
 // CSD1.00 - 2022 Oct 7 - D. E. Veloper
 //   Added Action Navigate

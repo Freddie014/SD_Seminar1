@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Posted Seminar Reg. List (ID 50136).
+/// </summary>
 page 50136 "CSD Posted Seminar Reg. List"
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
@@ -56,7 +59,7 @@ page 50136 "CSD Posted Seminar Reg. List"
         {
             part("Seminar Details FactBox"; "CSD Seminar Details FactBox")
             {
-                SubPageLink = "No." = Field ("Seminar No.");
+                SubPageLink = "No." = Field("Seminar No.");
                 ApplicationArea = All;
             }
             systempart("Links"; Links)
@@ -82,8 +85,8 @@ page 50136 "CSD Posted Seminar Reg. List"
                     Caption = 'Co&mments';
                     Image = Comment;
                     RunObject = page "CSD Seminar Comment List";
-                    RunPageLink = "No." = Field ("No.");
-                    RunPageView = where ("Table Name" = const ("Posted Seminar Registration"));
+                    RunPageLink = "No." = Field("No.");
+                    RunPageView = where("Table Name" = const("Posted Seminar Reg.Header"));
                     ApplicationArea = All;
                 }
                 action("&Charges")
@@ -91,7 +94,7 @@ page 50136 "CSD Posted Seminar Reg. List"
                     Caption = '&Charges';
                     Image = Costs;
                     RunObject = Page 50139;
-                    RunPageLink = "Document No." = Field ("No.");
+                    RunPageLink = "Document No." = Field("No.");
                     ApplicationArea = All;
                 }
             }

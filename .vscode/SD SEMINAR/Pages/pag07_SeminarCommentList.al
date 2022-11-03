@@ -1,4 +1,7 @@
-page 50107 "CSD Seminar Comment List"
+/// <summary>
+/// Page CSD Seminar Comment List (ID 50127).
+/// </summary>
+page 50127 "CSD Seminar Comment List"
 {
     PageType = List;
     Caption = 'Seminar Comment List';
@@ -28,7 +31,6 @@ page 50107 "CSD Seminar Comment List"
             }
         }
     }
-    
     
     
     var

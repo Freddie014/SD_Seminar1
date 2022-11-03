@@ -1,4 +1,7 @@
-page 50107 "CSD Seminar Comment List"
+/// <summary>
+/// Page CSD Seminar Comment Sheet (ID 50107).
+/// </summary>
+page 50107 "CSD Seminar Comment Sheet Copy"
 
 {
     Caption = 'Seminar Comment Line';

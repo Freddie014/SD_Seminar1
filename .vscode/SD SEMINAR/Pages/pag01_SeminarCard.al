@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Card (ID 50101).
+/// </summary>
 page 50101 "CSD Seminar Card"
 
 // CSD1.00 - 2018-01-01 - D. E. Veloper
@@ -83,6 +86,7 @@ page 50101 "CSD Seminar Card"
             }
         }
     }
+}
 
     area(FactBoxes)
 
@@ -109,7 +113,7 @@ page 50101 "CSD Seminar Card"
                 {
                     RunObject=page "CSD Seminar Comment Sheet";
 
-                                  RunPageLink = "TableName"=const(Seminar),"No."=field(No.);
+                    RunPageLink = "TableName"=const(Seminar),"No"=field(No);
 
                     Image = Comment;
 
@@ -124,4 +128,6 @@ page 50101 "CSD Seminar Card"
         }
         
     }
+
+    {
 }

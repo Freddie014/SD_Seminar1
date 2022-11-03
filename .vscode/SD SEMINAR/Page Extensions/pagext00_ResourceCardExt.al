@@ -1,4 +1,4 @@
-pageextension 50101 "CSD ResourceCardExt" extends "Resource Card"
+pageextension 50111 "CSD ResourceCardExt" extends "Resource Card"
 
 // CSD1.00 - 2018-01-01 - D. E. Veloper
 
@@ -19,33 +19,33 @@ pageextension 50101 "CSD ResourceCardExt" extends "Resource Card"
     {
         addlast(General)
         {
-            field("CSD Resource Type"; "CSD Resource Type")
-            {
+            // field("CSD Resource Type"; "CSD Resource Type")
+            // {
 
-            }
+            // }
 
-            field("CSD Quantity Per Day"; "CSD Quantity Per Day")
-            {
+            // field("CSD Quantity Per Day"; "CSD Quantity Per Day")
+            // {
 
-        }
+            // }
 
         }
         addafter("Personal Data")
         {
-            group("CSD Room")
+            // group("CSD Room")
 
-            {
-                Caption = 'Room';
-                Visible = ShowMaxField;
-                field("CSD Maximum Participants"; "CSD Maximum Participants")
+            // {
+            //     Caption = 'Room';
+            //     Visible = ShowMaxField;
+            //     field("CSD Maximum Participants"; "CSD Maximum Participants")
 
-            {
+            // {
 
-            }
+            // }
 
-            }
+            // }
             
-    }
+        }
 
         }
     trigger OnAfterGetRecord();

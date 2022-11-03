@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Details FactBox (ID 50117).
+/// </summary>
 page 50117 "CSD Seminar Details FactBox"
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper

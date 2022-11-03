@@ -15,6 +15,17 @@ table 50100 "CSD Seminar Setup"
         field(10; "Primary Key"; Code[10])
         {
             Caption = 'Primary Key';
+            trigger OnValidate();
+            begin
+
+                if "No." <> xRec."No." then begin
+                    SeminarSetup.Get();
+
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos");
+
+                    "No. Series" := '';
+                end;
+            end;
         }
         field(11; "No."; Code[20])
         {
@@ -34,6 +45,15 @@ table 50100 "CSD Seminar Setup"
 
         field(24; "Search Name"; Code[20])
         {
+            trigger OnValidate();
+
+            begin
+                if ("Search Name" = UpperCase(xRec.Name)) or
+
+                ("Search Name" = '') then
+                    "Search Name" := Name;
+
+            end;
 
         }
 
@@ -71,6 +91,18 @@ table 50100 "CSD Seminar Setup"
         {
 
             Caption = 'Gen. Prod. Posting Group';
+            trigger OnValidate();
+
+        begin
+
+        if (xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group") then begin
+
+            if GenProdPostingGroup.ValidateVatProdPostingGroup(GenProdPostingGroup, "Gen. Prod. Posting Group") then
+                Validate("VAT. Prod. Posting Group",GenProdPostingGroup."Def. VAT Prod. Posting Group");
+
+        end;
+
+        end;
 
             //TableRelation = "No. Series";
         }
@@ -79,6 +111,7 @@ table 50100 "CSD Seminar Setup"
         {
 
             Caption = 'VAT. Prod. Posting Group';
+            
 
             //TableRelation = "No. Series";
         }
@@ -145,43 +178,10 @@ table 50100 "CSD Seminar Setup"
 
     end;
 
-    trigger OnValidate();
-
-    begin
-
-        if "No." <> xRec."No." then begin
-            SeminarSetup.Get();
-
-            NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos");
-
-            "No. Series" := '';
-        end;
-    end;
 
 
-    trigger OnValidate();
 
-    begin
-        if ("Search Name" = UpperCase(xRec.Name)) or
 
-        ("Search Name" := '') then
 
-        "Search Name" := Name;
-
-    end;
-
-    trigger OnValidate();
-
-    begin
-
-        if (xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group") then begin
-
-            if GenProdPostingGroup.ValidateVatProdPostingGroup(GenProdPostingGroup, "Gen. Prod. Posting Group") then
-                Validate("VAT Prod. Posting Group",
-
-                GenProdPostingGroup."Def. VAT Prod. Posting Group");
-
-        end;
-
-    end;
+    
 }

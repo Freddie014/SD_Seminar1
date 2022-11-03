@@ -1,7 +1,7 @@
 table 50110 "CSD Seminar Reg. Header"
 {
     // CSD1.00 - 2022  October 8 - D. E. Veloper
-    
+
     Caption = 'Seminar Registration Header';
     LookupPageId = "CSD Seminar Registration List";
     DrillDownPageId = "CSD Seminar Registration List";
@@ -17,7 +17,7 @@ table 50110 "CSD Seminar Reg. Header"
             begin
                 if "No." <> xRec."No." then begin
                     SeminarSetup.Get();
-                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Registration Nos.");
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Registraion Nos");
                     "No. Series" := '';
                 end;
             end;
@@ -75,7 +75,7 @@ table 50110 "CSD Seminar Reg. Header"
         Field(5; "Instructor Resource No."; Code[20])
         {
             Caption = 'Instructor Resource No.';
-            TableRelation = Resource where (Type = const (Person));
+            TableRelation = Resource where(Type = const(Person));
             DataClassification = AccountData;
 
             trigger OnValidate();
@@ -86,8 +86,8 @@ table 50110 "CSD Seminar Reg. Header"
         Field(6; "Instructor Name"; Text[100])
         {
             Caption = 'Instructor Name';
-            CalcFormula = Lookup (Resource.Name where ("No." = Field ("Instructor Resource No."),
-                                                      Type = const (Person)));
+            CalcFormula = Lookup(Resource.Name where("No." = Field("Instructor Resource No."),
+                                                      Type = const(Person)));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -117,7 +117,7 @@ table 50110 "CSD Seminar Reg. Header"
         Field(11; "Room Resource No."; Code[20])
         {
             Caption = 'Room Resource No.';
-            TableRelation = Resource where (Type = const (Machine));
+            TableRelation = Resource where(Type = const(Machine));
             DataClassification = AccountData;
 
             trigger OnValidate();
@@ -246,8 +246,8 @@ table 50110 "CSD Seminar Reg. Header"
         Field(22; Comment; Boolean)
         {
             Caption = 'Comment';
-            CalcFormula = Exist ("CSD Seminar Comment Line" where ("Table Name" = const ("Seminar Registration"),
-                                                              "No." = Field ("No.")));
+            CalcFormula = Exist("CSD Seminar Comment Line" where("Table Name" = const("Seminar Registration Header"),
+                                                              "No." = Field("No.")));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -283,13 +283,14 @@ table 50110 "CSD Seminar Reg. Header"
             trigger OnLookup();
             begin
                 SeminarRegHeader.Reset();
-                if SeminarRegHeader.FindFirst() then begin;
-                //with SeminarRegHeader do begin
+                if SeminarRegHeader.FindFirst() then begin
+                    ;
+                    //with SeminarRegHeader do begin
                     SeminarRegHeader := Rec;
                     SeminarSetup.Get();
-                    SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
-                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos.", "Posting No. Series")
+                    SeminarSetup.TestField("Seminar Registraion Nos");
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos");
+                    if NoSeriesMgt.LookupSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series")
                     then
                         VALIDATE("Posting No. Series");
                     Rec := SeminarRegHeader;
@@ -300,9 +301,9 @@ table 50110 "CSD Seminar Reg. Header"
             begin
                 if "Posting No. Series" <> '' then begin
                     SeminarSetup.Get();
-                    SeminarSetup.TestField("Seminar Registration Nos.");
-                    SeminarSetup.TestField("Posted Seminar Reg. Nos.");
-                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar Reg. Nos.", "Posting No. Series");
+                    SeminarSetup.TestField("Seminar Registraion Nos");
+                    SeminarSetup.TestField("Posted Seminar Reg. Nos");
+                    NoSeriesMgt.TestSeries(SeminarSetup."Posted Seminar Reg. Nos", "Posting No. Series");
                 end;
                 TestField("Posting No.", '');
             end;
@@ -371,7 +372,7 @@ table 50110 "CSD Seminar Reg. Header"
             ERROR(Text006, SeminarCharge.TableCaption());
 
         SeminarCommentLine.Reset();
-        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration");
+        SeminarCommentLine.SetRange("Table Name", SeminarCommentLine."Table Name"::"Seminar Registration Header");
         SeminarCommentLine.SetRange("No.", "No.");
         SeminarCommentLine.deleteALL();
     end;
@@ -380,8 +381,8 @@ table 50110 "CSD Seminar Reg. Header"
     begin
         if "No." = '' then begin
             SeminarSetup.Get();
-            SeminarSetup.TestField("Seminar Registration Nos.");
-            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registration Nos.", xRec."No. Series", 0D, "No.", "No. Series");
+            SeminarSetup.TestField("Seminar Registraion Nos");
+            NoSeriesMgt.InitSeries(SeminarSetup."Seminar Registraion Nos", xRec."No. Series", 0D, "No.", "No. Series");
         end;
         initrecord();
         // >> Lab 8-1
@@ -397,25 +398,31 @@ table 50110 "CSD Seminar Reg. Header"
             "Posting Date" := WorkDate();
         "Document Date" := WorkDate();
         SeminarSetup.Get();
-        NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Reg. Nos.");
+        NoSeriesMgt.SetDefaultSeries("Posting No. Series", SeminarSetup."Posted Seminar Reg. Nos");
     end;
 
+    /// <summary>
+    /// AssistEdit.
+    /// </summary>
+    /// <param name="OldSeminarRegHeader">Record "CSD Seminar Reg. Header".</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure AssistEdit(OldSeminarRegHeader: Record "CSD Seminar Reg. Header"): Boolean;
     begin
         SeminarRegHeader.Reset();
-        if SeminarRegHeader.FindFirst() then begin;
+        if SeminarRegHeader.FindFirst() then begin
+            ;
 
-        //with SeminarRegHeader do begin
+            //with SeminarRegHeader do begin
             SeminarRegHeader := Rec;
             SeminarSetup.Get();
-            SeminarSetup.TestField("Seminar Registration Nos.");
-            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registration Nos.", OldSeminarRegHeader."No. Series", "No. Series") then begin
+            SeminarSetup.TestField("Seminar Registraion Nos");
+            //if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Registraion Nos", '', '') then begin
                 SeminarSetup.Get();
-                SeminarSetup.TestField("Seminar Registration Nos.");
+                SeminarSetup.TestField("Seminar Registraion Nos");
                 NoSeriesMgt.SetSeries("No.");
                 Rec := SeminarRegHeader;
                 exit(true);
-            end;
+           // end;
         end;
     end;
 }

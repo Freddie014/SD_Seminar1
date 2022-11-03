@@ -1,7 +1,7 @@
 table 50118 "CSD Posted Seminar Reg. Header"
 {
     // CSD1.00 - 2022 Oct 8 - D. E. Veloper
-    
+
     Caption = 'Posted Seminar Registration Header';
     LookupPageId = "CSD Posted Seminar Reg. List";
     DrillDownPageId = "CSD Posted Seminar Reg. List";
@@ -34,15 +34,15 @@ table 50118 "CSD Posted Seminar Reg. Header"
         Field(5; "Instructor Resource No."; Code[20])
         {
             Caption = 'Instructor Resource No.';
-            TableRelation = Resource where (Type = const (Person));
+            TableRelation = Resource where(Type = const(Person));
             DataClassification = AccountData;
 
         }
         Field(6; "Instructor Name"; Text[100])
         {
             Caption = 'Instructor Name';
-            CalcFormula = Lookup (Resource.Name where ("No." = Field ("Instructor Resource No."),
-                                                      Type = const (Person)));
+            CalcFormula = Lookup(Resource.Name where("No." = Field("Instructor Resource No."),
+                                                      Type = const(Person)));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -72,7 +72,7 @@ table 50118 "CSD Posted Seminar Reg. Header"
         Field(11; "Room Resource No."; Code[20])
         {
             Caption = 'Room Resource No.';
-            TableRelation = Resource where (Type = const (Machine));
+            TableRelation = Resource where(Type = const(Machine));
             DataClassification = AccountData;
         }
         Field(12; "Room Name"; Text[30])
@@ -135,8 +135,8 @@ table 50118 "CSD Posted Seminar Reg. Header"
         Field(22; Comment; Boolean)
         {
             Caption = 'Comment';
-            CalcFormula = Exist ("CSD Seminar Comment Line" where ("Table Name" = const ("Posted Seminar Registration"),
-                                                              "No." = Field ("No.")));
+            CalcFormula = Exist("CSD Seminar Comment Line" where("Table Name" = const("Posted Seminar Reg.Header"),
+                                                              "No." = Field("No.")));
             Editable = false;
             FieldClass = FlowField;
         }
@@ -163,7 +163,7 @@ table 50118 "CSD Posted Seminar Reg. Header"
             TableRelation = "No. Series".Code;
             DataClassification = AccountData;
         }
-        
+
         Field(28; "Posting No."; Code[20])
         {
             Caption = 'Posting No.';
@@ -216,6 +216,6 @@ table 50118 "CSD Posted Seminar Reg. Header"
         Text005: Label 'Should the new %1 be copied to all %2 that are not yet invoiced?';
         Text006: Label 'You cannot delete the Seminar Registration, because there is at least one %1.';
 
- 
+
 }
 

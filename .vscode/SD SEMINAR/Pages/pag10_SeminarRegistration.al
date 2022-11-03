@@ -1,3 +1,6 @@
+/// <summary>
+/// Page CSD Seminar Registration (ID 50110).
+/// </summary>
 page 50110 "CSD Seminar Registration"
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
@@ -166,7 +169,7 @@ page 50110 "CSD Seminar Registration"
                     Image = Comment;
                     RunObject = Page 50106;
                     RunPageLink = "No." = Field ("No.");
-                    RunPageView = where ("Table Name" = const ("Seminar Registration"));
+                    RunPageView = where ("Table Name" = const ("Seminar Registration Header"));
                     ApplicationArea = All;
                 }
                 action("&Charges")
